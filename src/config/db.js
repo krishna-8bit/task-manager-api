@@ -9,7 +9,8 @@ async function connectDB(){
         console.log("Connected DB");
     }
     catch(error){
-        console.log(error);
+        console.error("Database connection failed:", error);
+        throw error;
     }
 }
 export default connectDB;

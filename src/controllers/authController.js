@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 
 export async function register(req,res){
-    try{
+    // try{
         const {name, email, password}=req.body;
         const existingUser =await User.findOne({email}); 
         if(existingUser){
@@ -19,20 +19,20 @@ export async function register(req,res){
 
         await user.save();
 
-        res.status(201).json({
+        return res.status(201).json({
             message : "User registered successfully"
         });
-    }
-    catch(error){
-        res.status(500).json({
-            message : "Something went wrong",
-            error : error.message
-        });
-    }
+    // }
+    // catch(error){
+    //     res.status(500).json({
+    //         message : "Something went wrong",
+    //         error : error.message
+    //     });
+    // }
 }
 
 export async function login(req,res){
-    try{
+    // try{
         const {email, password}=req.body;
         const user=await User.findOne({email});
         if(!user){
@@ -64,11 +64,11 @@ export async function login(req,res){
             token
         });
         
-    }
-    catch(error){
-        res.status(500).json({
-            message : "Something went wrong",
-            error : error.message
-        });
-    }
+    // }
+    // catch(error){
+    //     res.status(500).json({
+    //         message : "Something went wrong",
+    //         error : error.message
+    //     });
+    // }
 }
